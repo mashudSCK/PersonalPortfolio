@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio - Full Stack Developer & Aspiring Game Developer">
+    <title>Mashud Khalid | Full Stack Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-text">MK</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                </svg>
+                <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-name">Mashud Khalid</h1>
+                    <p class="hero-tagline">Full Stack Developer & Aspiring Game Developer</p>
+                    <p class="hero-intro">I craft elegant digital solutions that bridge the gap between functionality and beautiful design.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <img src="images/1x1 Pic.png" alt="Portrait of Mashud Khalid" class="hero-image">
+                        <div class="hero-image-decoration"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span class="scroll-text">Scroll to explore</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know the person behind the code</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card about-bio">
+                    <div class="card-icon">👨‍💻</div>
+                    <h3>Who I Am</h3>
+                    <p>I’m a passionate web developer who enjoys building clean, responsive, and user-focused applications. I’m driven by curiosity and a constant desire to understand how ideas turn into functional digital products through code.</p>
+                    <p>Beyond web development, I’m an aspiring game developer with a growing interest in game mechanics, interactive design, and immersive storytelling. I see development as both a technical craft and a creative outlet—where logic meets imagination.</p>
+                </div>
+                <div class="about-card about-details">
+                    <div class="card-icon">🎯</div>
+                    <h3>My Approach</h3>
+                    <ul class="about-list">
+                        <li>
+                            <span class="list-icon">💡</span>
+                            <span><strong>Problem-First Thinking:</strong> I focus on understanding the problem deeply before jumping to solutions.</span>
+                        </li>
+                        <li>
+                            <span class="list-icon">🔄</span>
+                            <span><strong>Iterative Development:</strong> Building, testing, and refining until it's just right.</span>
+                        </li>
+                        <li>
+                            <span class="list-icon">📚</span>
+                            <span><strong>Continuous Learning:</strong> Technology evolves, and so do I.</span>
+                        </li>
+                        <li>
+                            <span class="list-icon">🤝</span>
+                            <span><strong>Collaboration:</strong> The best ideas come from diverse perspectives.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-card about-hobbies">
+                    <div class="card-icon">🌟</div>
+                    <h3>Beyond Code</h3>
+                    <p>When I'm not coding, you'll find me:</p>
+                    <div class="hobbies-grid">
+                        <div class="hobby-item">
+                            <span class="hobby-icon">♟️</span>
+                            <span>Playing Chess</span>
+                        </div>
+                        <div class="hobby-item">
+                            <span class="hobby-icon">🎨</span>
+                            <span>Drawing</span>
+                        </div>
+                        <div class="hobby-item">
+                            <span class="hobby-icon">🎬</span>
+                            <span>Watching Movies</span>
+                        </div>
+                        <div class="hobby-item">
+                            <span class="hobby-icon">📖</span>
+                            <span>Reading</span>
+                        </div>
+                        <div class="hobby-item">
+                            <span class="hobby-icon">🎮</span>
+                            <span>Gaming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">A showcase of my recent work and passion projects</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card" data-tilt>
+                    <div class="project-image-wrapper">
+                        <img src="images/sulyap.png" alt="TaskFlow Pro Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/mashudSCK/sulyap" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View GitHub Repository">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://sulyap.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Live Demo">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sulyap</h3>
+                        <p class="project-description">An anonymous, real-time chat application designed for brief, meaningful conversations—without profiles, history, or digital footprints.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-role">Full-Stack Developer</span>
+                        </div>
+                        <details class="project-story">
+                            <summary>Why I built this</summary>
+                            <p>Sulyap was born from my curiosity about real-time systems and my interest in privacy-first digital experiences. I wanted to explore how people connect when identity, history, and algorithms are removed from the equation.</p>
+                            <p>This project challenged me to work with WebSockets, real-time user matching, and event-driven architecture while keeping the interface simple and lightweight. Sulyap reflects my focus on building interactive web applications that prioritize both technical efficiency and human experience.</p>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card" data-tilt>
+                    <div class="project-image-wrapper">
+                        <img src="images/news.png" alt="WeatherWise App Interface" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/mashudSCK/NewsHub" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View GitHub Repository">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://newshub-sigma-liard.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Live Demo">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">NewsHub — Modern News Aggregator</h3>
+                        <p class="project-description">A responsive news platform that delivers the latest headlines, unlimited searching, category-based browsing, and customizable bookmarks — all with smooth UX and mobile-friendly design.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">GNews API</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-role">Full Stack Developer</span>
+                        </div>
+                        <details class="project-story">
+                            <summary>Why I built this</summary>
+                            <p>I built NewsHub out of curiosity and a desire to better understand how APIs work in real-world applications. This project allowed me to explore fetching, handling, and displaying dynamic data from a third-party news API while focusing on performance, usability, and clean UI design.</p>
+                            <p>Through NewsHub, I deepened my understanding of API integration, asynchronous data handling, and modern front-end development using Next.js. It represents my hands-on approach to learning—building practical projects to turn concepts into working products.</p>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card" data-tilt>
+                    <div class="project-image-wrapper">
+                        <img src="images/ov.png" alt="Online Voting Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/mashudSCK/Online-Voting" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View GitHub Repository">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Online Voting System (SKSU)</h3>
+                        <p class="project-description">A secure, role-based online voting platform built for student organization elections across multiple campuses at Sultan Kudarat State University, developed as a school project for Interactive Programming and Technologies.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-role">Developer / Academic Project</span>
+                        </div>
+                        <details class="project-story">
+                            <summary>Why I built this</summary>
+                            <p>I developed this system as part of my Interactive Programming and Technologies course to gain practical experience in full-stack web development and role-based application design. The project challenged me to implement secure authentication, multi-role access (admin, officer, student), and database-driven election workflows while handling real-world constraints like vote integrity and session management. This system represents my hands-on learning in server-side logic, database design, and building applications that support structured user interactions.</p>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card" data-tilt>
+                    <div class="project-image-wrapper">
+                        <img src="images/wt.png" alt="Weather Tracker Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/mashudSCK/weather-tracker-dashboard" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View GitHub Repository">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Tracker Dashboard</h3>
+                        <p class="project-description">A dynamic weather tracking dashboard built using the CodeIgniter 4 framework to fetch, display, and organize weather information based on user-selected locations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">CodeIgniter 4</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">REST APIs</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-role">Developer / Academic Project</span>
+                        </div>
+                        <details class="project-story">
+                            <summary>Why I built this</summary>
+                            <p>I built the Weather Tracker Dashboard as part of my System Integration and Architecture 1 course to deepen my understanding of modern PHP frameworks and RESTful API integration. This project gave me hands-on experience with CodeIgniter 4’s MVC structure, handling external APIs for real-time weather data, and presenting dynamic content in a user-friendly dashboard. It reflects my focus on learning backend frameworks, structuring scalable projects, and building interactive applications that integrate external services.</p>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card" data-tilt>
+                    <div class="project-image-wrapper">
+                        <img src="images/PSITS.png" alt="PSITS Clearance Management System" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/mashudSCK/PSITS-Clearance-Management-System" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View GitHub Repository">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PSITS Clearance Management System</h3>
+                        <p class="project-description">A web-based clearance processing system designed to streamline student clearance workflows for the College of Information and Technology Studies.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-role">Developer / Academic Project</span>
+                        </div>
+                        <details class="project-story">
+                            <summary>Why I built this</summary>
+                            <p>I created the PSITS Clearance Management System as part of my academic coursework to apply core web development principles to a real-world administrative problem. This project gave me hands-on experience with server-side development using PHP, relational database design with MySQL, dynamic user interfaces, and structured form processing. It reflects my focus on building functional applications that support structured workflows and practical use cases within educational institutions.</p>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="project-card" data-tilt>
+                    <div class="project-image-wrapper">
+                        <img src="images/ext.png" alt="Expense Tracker System" class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/mashudSCK/expense-tracker" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View GitHub Repository">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Expense Tracker System</h3>
+                        <p class="project-description">A comprehensive web-based expense management application built with CodeIgniter 4 that enables users to record, organize, and track daily expenses with multi-currency support and real-time conversion.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">CodeIgniter 4</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">REST API Integration</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-role">Developer / Academic Project</span>
+                        </div>
+                        <details class="project-story">
+                            <summary>Why I built this</summary>
+                            <p>I developed the Expense Tracker System as an academic project to strengthen my understanding of PHP frameworks, backend architecture, API integration, and practical MVC design. This application implements secure user authentication, multi-currency expense tracking with real-time currency conversions via an external API, and responsive dashboards for managing financial data. It reflects my focus on learning structured backend development and delivering functional, user-oriented systems.</p>
+                        </details>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+                <p class="section-subtitle">Technologies and tools I work with</p>
+            </div>
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="skills-icon">💻</span>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">PHP</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL (MySQL)</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="skills-icon">🚀</span>
+                        <h3>Frameworks & Libraries</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">React / Next.js</span>
+                                <span class="skill-level">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="60"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js / Express</span>
+                                <span class="skill-level">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="55"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Socket.io (Real-time)</span>
+                                <span class="skill-level">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="65"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">CodeIgniter 4</span>
+                                <span class="skill-level">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Tailwind CSS / Bootstrap</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="skills-icon">🛠️</span>
+                        <h3>Tools & Technologies</h3>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git / GitHub</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MySQL</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">REST APIs & Integration</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Deployment (Vercel / Render)</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Responsive UI Development</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skills-card">
+                    <div class="skills-card-header">
+                        <span class="skills-icon">🎯</span>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Collaboration</span>
+                        <span class="skill-tag">Debugging</span>
+                        <span class="skill-tag">Attention to Detail</span>
+                        <span class="skill-tag">UI/UX Principles</span>
+                        <span class="skill-tag">Continuous Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Achievements</h2>
+                <p class="section-subtitle">Certifications, awards, and milestones</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <img src="images/sksu-logo.png" alt="SKSU Logo" style="width: 40%; height: 40%; margin: auto; object-fit: contain;">
+                    </div>
+                    <h3>BS Information Technology</h3>
+                    <p>Sultan Kudarat State University</p>
+                    <span class="achievement-date">2023-Present</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">👥</div>
+                    <h3>PSITS Member</h3>
+                    <p>Philippine Society of IT Students</p>
+                    <span class="achievement-date">2023-Present</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <h3>Academic Excellence</h3>
+                    <p>Dean's List Recognition</p>
+                    <span class="achievement-date">3rd Year - 1st Semester</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💻</div>
+                    <h3>Full-Stack Projects</h3>
+                    <p>6+ Web Applications Developed</p>
+                    <span class="achievement-date">2023-Present</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">⭐</div>
+                    <h3>GitHub Portfolio</h3>
+                    <p>Active Open Source Contributions</p>
+                    <span class="achievement-date">2025-Present</span>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🚀</div>
+                    <h3>Live Production Apps</h3>
+                    <p>Real-time & API-driven Systems</p>
+                    <span class="achievement-date">2025-Present</span>
+                </div>
+            </div>
+            <div class="resume-download">
+                <a href="./resume.pdf" download class="btn btn-primary btn-download">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's build something amazing together</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="contact-message">I'm always excited to connect with fellow developers, potential collaborators, or anyone who wants to chat about technology. Whether you have a project idea, a question, or just want to say hi, my inbox is always open!</p>
+                    <div class="contact-methods">
+                        <a href="mailto:mashudkhalid.work@gmail.com" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label">Email</span>
+                                <span class="contact-method-value">mashudkhalid.work@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/mashudkhalid" target="_blank" rel="noopener noreferrer" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label">LinkedIn</span>
+                                <span class="contact-method-value">@mashudkhalid</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/mashudSCK" target="_blank" rel="noopener noreferrer" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label">GitHub</span>
+                                <span class="contact-method-value">@mashudSCK</span>
+                            </div>
+                        </a>
+                        <a href="https://www.facebook.com/mashud.nvm" target="_blank" rel="noopener noreferrer" class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label">Facebook</span>
+                                <span class="contact-method-value">@Mashud Khalid</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="b2089833-76bb-4bd9-b633-d695f8ecb158">
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                    <input type="hidden" name="replyto" id="replyto">
+                    
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or just say hi!"></textarea>
+                    </div>
+                    <div id="form-message" class="form-message"></div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">Designed & Built by Mashud Khalid</p>
+                <p class="footer-copyright">© 2026 All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/mashudSCK" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://linkedin.com/in/mashudkhalid" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://www.facebook.com/mashud.nvm" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
