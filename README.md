@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website featuring a minimal card-based dashboard design with subtle interactive elements. Built with vanilla HTML, CSS, and JavaScript for maximum performance and maintainability.
 
-![Portfolio Preview](https://via.placeholder.com/800x400?text=Portfolio+Preview)
+![Portfolio Preview](images/preview.png)
 
 ## ✨ Features
 
