@@ -1498,9 +1498,10 @@ ul, ol {
 .animate-delay-4 { animation-delay: 0.4s; }
 .animate-delay-5 { animation-delay: 0.5s; }
 
-/* Hide elements before animation */
-[class*="animate-fade"] {
-    opacity: 0;
+/* Reveal animations are disabled; this class is a no-op. */
+.will-animate {
+    opacity: 1;
+    transform: none;
 }
 
 /* ==========================================================================

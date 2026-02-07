@@ -173,36 +173,7 @@ function initSmoothScroll() {
  * Initialize scroll-triggered animations
  */
 function initScrollAnimations() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const animationObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-                
-                // Trigger skill bar animations when skills section is visible
-                if (entry.target.classList.contains('skills-card')) {
-                    animateSkillBars(entry.target);
-                }
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for animation
-    const animatableElements = document.querySelectorAll(
-        '.about-card, .project-card, .skills-card, .achievement-card, .contact-method, .contact-form'
-    );
-
-    animatableElements.forEach((element, index) => {
-        element.style.animationDelay = `${index * 0.1}s`;
-        animationObserver.observe(element);
-    });
+    // Scroll-reveal animations intentionally disabled.
 }
 
 /**
@@ -479,12 +450,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize features
     initSmoothScroll();
-    initScrollAnimations();
+    // Scroll-reveal animations disabled
     initCardTilt();
     initContactForm();
     initTypingEffect();
     initParallax();
     initThemeToggle();
+
+    // Skills: set bar widths immediately (no reveal trigger)
+    skillProgressBars.forEach((bar) => {
+        const progress = bar.getAttribute('data-progress');
+        if (progress) {
+            bar.style.width = `${progress}%`;
+        }
+    });
 
     // Initial state
     handleNavbarScroll();

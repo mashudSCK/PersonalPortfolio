@@ -9,7 +9,6 @@ A modern, responsive personal portfolio built with vanilla **HTML**, **CSS**, an
 - **Responsive layout** (desktop/tablet/mobile)
 - **Light/Dark theme toggle** (saved in `localStorage`)
 - **Smooth scrolling** + active nav state on scroll
-- **Scroll-triggered animations** (Intersection Observer)
 - **Project card tilt** interaction
 - **Animated skill bars**
 - **Typing effect** on the hero tagline
