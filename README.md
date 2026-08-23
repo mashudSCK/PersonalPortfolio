@@ -4,7 +4,7 @@ A modern, responsive personal portfolio built with vanilla **HTML**, **CSS**, an
 
 ![Portfolio Preview](images/preview.png)
 
-## ✨ Features
+## Features
 
 - **Responsive layout** (desktop/tablet/mobile)
 - **Light/Dark theme toggle** (saved in `localStorage`)
@@ -14,7 +14,7 @@ A modern, responsive personal portfolio built with vanilla **HTML**, **CSS**, an
 - **Typing effect** on the hero tagline
 - **Contact form powered by Web3Forms** (no backend needed)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -44,7 +44,7 @@ npm install -g serve
 serve .
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 PersonalPortfolio/
@@ -56,7 +56,7 @@ PersonalPortfolio/
 └── README.md               # This file
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Update your info
 
@@ -84,7 +84,7 @@ Edit the CSS variables in `styles.css`:
 }
 ```
 
-## 📄 Resume download
+## Resume download
 
 The **Download Resume** button in `index.html` points to `./resume.pdf`.
 
@@ -92,19 +92,19 @@ To enable it:
 1. Add your resume PDF to the project root
 2. Name it `resume.pdf` (or update the link in `index.html`)
 
-## 📝 Contact form (Web3Forms)
+## Contact form (Web3Forms)
 
 This site is already wired to **Web3Forms** in `script.js` and uses a hidden `access_key` input in the form.
 
 - Setup instructions: see `CONTACT_FORM_SETUP.md`
 - Endpoint used: `https://api.web3forms.com/submit`
 
-## 🌐 Deployment
+## Deployment
 
 - **GitHub Pages:** push to GitHub → Settings → Pages → deploy from the root
 - **Netlify/Vercel:** import the repo and deploy with default settings
 
-## 🙏 Credits
+## Credits
 
 - Fonts: [Inter](https://fonts.google.com/specimen/Inter) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
 - Icons: inline SVGs in the HTML
