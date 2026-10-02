@@ -15,9 +15,9 @@ Your contact form is now configured to use **Web3Forms** - a free service that s
 ### Step 2: Add Access Key to Your Form
 
 1. Open `index.html`
-2. Find this line (around line 672):
+2. Find the hidden `access_key` input:
    ```html
-   <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+   <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
    ```
 3. Replace `YOUR_ACCESS_KEY_HERE` with your actual access key
 4. Save the file
@@ -29,38 +29,49 @@ Your contact form is now configured to use **Web3Forms** - a free service that s
 3. Submit it
 4. Check your email - you should receive the message!
 
+### Step 4: Activate hCaptcha
+
+1. Open the form in your Web3Forms dashboard
+2. Select hCaptcha as the CAPTCHA provider
+3. Save the form settings
+
+The page already includes Web3Forms' hCaptcha widget and client script.
+
 ### Security Note
 
 Your `access_key` is already live in `index.html`. This is normal — Web3Forms access keys are designed to be used client-side, similar to a public site ID. However, if this repository is public on GitHub, anyone could technically copy your key and use it to send form submissions through your Web3Forms account. To prevent this:
 
 1. Log in to your Web3Forms dashboard
 2. Open your access key's settings
-3. Add your live domain (e.g. `yourname.github.io`) to the allowed domains / referrer restriction list
+3. Add your live domain (`mashudkhalid.vercel.app`) to the allowed domains / referrer restriction list
 
 This way the key only works when submitted from your actual site.
 
 ## Features
 
 ✅ **Real email delivery** - Messages go directly to your inbox  
-✅ **Spam protection** - Built-in spam filtering  
+✅ **Spam protection** - Server filtering, honeypot, and hCaptcha
 ✅ **No backend needed** - Works on any static hosting  
 ✅ **Free tier** - 250 submissions per month  
 ✅ **Success/Error messages** - User feedback is handled  
-✅ **Mobile friendly** - Works on all devices  
+✅ **Mobile friendly** - Works on all devices
 
 ## Troubleshooting
 
 **Form not sending?**
+
 - Make sure you replaced `YOUR_ACCESS_KEY_HERE` with your actual key
 - Check browser console for errors (F12)
 - Verify your access key is activated via email
 
 **Not receiving emails?**
+
 - Check your spam folder
 - Verify the email address in your Web3Forms account
 - Make sure you verified your email address
 
 **Want to customize notifications?**
+
 - Log in to web3forms.com dashboard
 - Configure email templates, webhooks, and more
 
@@ -73,7 +84,7 @@ If you prefer other services, you can easily switch:
 - **EmailJS** (https://emailjs.com) - Client-side email sending
 - **Getform** (https://getform.io) - Another form backend
 
-Just update the API endpoint in `script.js` (handleFormSubmit function).
+Update the API endpoint in `js/contact.js`.
 
 ## Support
 

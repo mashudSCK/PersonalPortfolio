@@ -1,0 +1,17 @@
+node_modules/
+.tmp/
+.lighthouseci/
+playwright-report/
+test-results/
+.agents/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

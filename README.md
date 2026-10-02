@@ -9,10 +9,11 @@ A modern, responsive personal portfolio built with vanilla **HTML**, **CSS**, an
 - **Responsive layout** (desktop/tablet/mobile)
 - **Light/Dark theme toggle** (saved in `localStorage`)
 - **Smooth scrolling** + active nav state on scroll
-- **Project card tilt** interaction
-- **Animated skill bars**
-- **Typing effect** on the hero tagline
-- **Contact form powered by Web3Forms** (no backend needed)
+- **Focused mobile project list** with expandable secondary work
+- **Quiet, content-first interactions** without distracting motion
+- **Accessible keyboard navigation** and reduced-motion support
+- **Data-driven projects, skills, and achievements**
+- **Web3Forms contact form** with hCaptcha and input limits
 
 ## Getting Started
 
@@ -20,6 +21,7 @@ A modern, responsive personal portfolio built with vanilla **HTML**, **CSS**, an
 
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 - A code editor (VS Code recommended)
+- Node.js 20+ for quality checks and browser tests
 
 ### Run locally
 
@@ -40,8 +42,8 @@ Open `http://localhost:8000`.
 #### Option 3: Node.js
 
 ```bash
-npm install -g serve
-serve .
+npm install
+npm run dev
 ```
 
 ## Project Structure
@@ -50,7 +52,14 @@ serve .
 PersonalPortfolio/
 ├── index.html              # Main page
 ├── styles.css              # Styling + theme variables
-├── script.js               # Interactions + animations + form submit
+├── js/                     # Content, rendering, navigation, theme, form, SEO
+├── tests/                  # Playwright smoke tests and local test server
+├── script.js               # Small module entry point
+├── package.json            # Formatting, linting, and test commands
+├── netlify.toml            # Netlify security headers
+├── vercel.json             # Vercel security headers
+├── robots.txt              # Search crawler policy
+├── sitemap.xml             # Canonical page sitemap
 ├── CONTACT_FORM_SETUP.md   # Web3Forms setup guide
 ├── images/                 # Local images used by the site
 └── README.md               # This file
@@ -60,7 +69,7 @@ PersonalPortfolio/
 
 ### Update your info
 
-Edit `index.html` and update:
+Edit `index.html` for page copy and contact details. Edit `js/content.js` for repeated collections:
 
 - **Hero:** name, tagline, intro
 - **About:** bio, approach, hobbies
@@ -78,9 +87,9 @@ Edit the CSS variables in `styles.css`:
 
 ```css
 :root {
-  --color-accent: #6366f1;
-  --color-accent-light: #818cf8;
-  --color-accent-dark: #4f46e5;
+  --color-accent: #9c4c2d;
+  --color-accent-light: #bd6b48;
+  --color-accent-dark: #74351f;
 }
 ```
 
@@ -89,12 +98,13 @@ Edit the CSS variables in `styles.css`:
 The **Download Resume** button in `index.html` points to `./resume.pdf`.
 
 To enable it:
+
 1. Add your resume PDF to the project root
 2. Name it `resume.pdf` (or update the link in `index.html`)
 
 ## Contact form (Web3Forms)
 
-This site is already wired to **Web3Forms** in `script.js` and uses a hidden `access_key` input in the form.
+This site is wired to **Web3Forms** in `js/contact.js` and uses a public `access_key` input in the form.
 
 - Setup instructions: see `CONTACT_FORM_SETUP.md`
 - Endpoint used: `https://api.web3forms.com/submit`
@@ -102,13 +112,25 @@ This site is already wired to **Web3Forms** in `script.js` and uses a hidden `ac
 ## Deployment
 
 - **GitHub Pages:** push to GitHub → Settings → Pages → deploy from the root
-- **Netlify/Vercel:** import the repo and deploy with default settings
+- **Netlify/Vercel:** import the repo and deploy with default settings. Included configs apply security headers.
+- **GitHub Pages:** cannot apply repository-defined HTTP headers. Use Netlify or Vercel when headers are required.
+
+Update canonical URLs in `index.html`, `js/seo.js`, `robots.txt`, and `sitemap.xml` if the production URL changes.
+
+## Quality checks
+
+```bash
+npm run format:check
+npm run lint
+npm test
+npm run audit
+```
 
 ## Credits
 
-- Fonts: [Inter](https://fonts.google.com/specimen/Inter) and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
+- Fonts: system sans-serif and monospace stacks; no font-network dependency
 - Icons: [Font Awesome](https://fontawesome.com/) (self-hosted in `vendor/fontawesome/`) + inline SVGs for theme toggle and contact links
 
 ---
 
-Made by Mashud Khalid
+Made by Mashud Shamsher Khalid

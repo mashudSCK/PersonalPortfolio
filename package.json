@@ -1,0 +1,28 @@
+{
+  "name": "mashud-khalid-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "serve . -l 4173 --no-clipboard",
+    "images": "node scripts/generate-images.js",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"**/*.css\" \"!vendor/**/*.css\"",
+    "lint:html": "html-validate index.html",
+    "audit": "node scripts/audit.js",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "eslint": "10.11.0",
+    "html-validate": "11.16.1",
+    "lighthouse": "13.5.0",
+    "prettier": "3.9.9",
+    "serve": "14.2.6",
+    "sharp": "0.35.5",
+    "stylelint": "17.15.0"
+  }
+}
