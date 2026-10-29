@@ -23,7 +23,8 @@
 
 export type PerfTier = "high" | "mid" | "low";
 
-const KEY = "perf-tier";
+// Reassess tabs measured before the mobile renderer was enabled.
+const KEY = "perf-tier-v2";
 export const PERF_TIER_EVENT = "perftierchange";
 
 /** Sustained frame time above this means the device cannot hold ~45fps. */

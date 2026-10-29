@@ -19,10 +19,7 @@ import { useIsPhone } from "@/hooks/useMediaQuery";
 import { getPerfTier, watchFrameHealth, PERF_TIER_EVENT } from "@/lib/perf";
 
 // Lazy-load HeroCanvas so the 118KB Three.js bundle is fetched only
-// when actually needed. Mobile + reduced-motion users skip the import
-// entirely - the .hero-canvas CSS fallback (background:var(--cream))
-// handles the visual baseline. PageSpeed showed Three.js had 76.6 KiB
-// of unused JS; not loading it at all on mobile is the cleaner fix.
+// when actually needed. Reduced-motion users skip it entirely.
 const HeroCanvas = lazy(() => import("@/components/HeroCanvasV2"));
 
 /**
@@ -92,10 +89,7 @@ export default function App() {
   const [shouldLoadCanvas, setShouldLoadCanvas] = useState(false);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const isMobile = window.matchMedia(
-      "(pointer: coarse) and (hover: none)",
-    ).matches;
-    if (reduceMotion || isMobile) return;
+    if (reduceMotion) return;
     // Defer the Three.js fetch to idle time so it does not compete with
     // initial render / LCP. Falls back to setTimeout if requestIdleCallback
     // is unavailable (Safari).

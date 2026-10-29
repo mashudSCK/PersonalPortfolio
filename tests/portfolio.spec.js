@@ -132,3 +132,26 @@ test("mobile routes fit and navigation and jump work", async ({ page }) => {
   await expect(page.getByRole("status")).toContainText("0 obstacles cleared");
   expect(errors).toEqual([]);
 });
+
+test("touch devices animate the background unless motion is reduced", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true,
+    reducedMotion: "no-preference",
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+  await expect(page.locator(".hero-canvas canvas")).toBeAttached({
+    timeout: 20000,
+  });
+  const size = await page
+    .locator(".hero-canvas canvas")
+    .evaluate((canvas) => ({ width: canvas.width, viewport: innerWidth }));
+  expect(size.width).toBeLessThan(size.viewport);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".hero-canvas canvas")).toHaveCount(0);
+  await context.close();
+});

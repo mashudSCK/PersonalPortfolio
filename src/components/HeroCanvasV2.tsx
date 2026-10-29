@@ -149,7 +149,7 @@ export default function HeroCanvasV2() {
       "ontouchstart" in window ||
       (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ||
       navigator.maxTouchPoints > 0;
-    if (reduced || isTouch) return;
+    if (reduced) return;
 
     const scene = new THREE.Scene();
     const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 10);
@@ -158,7 +158,13 @@ export default function HeroCanvasV2() {
     // antialias off: this is a single fullscreen quad - the only "edges" are
     // the contour lines, which the shader already smooths with fwidth(), so
     // MSAA buys nothing and just costs a multisample buffer.
-    const renderer = new THREE.WebGLRenderer({ antialias: false });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: false });
+    } catch {
+      // The regular page background remains available without WebGL.
+      return;
+    }
     renderer.setSize(window.innerWidth, window.innerHeight);
     // Render ABOVE 1:1 so higher-DPI displays get crisp contour lines. The
     // 0.5 default looked pixelated; 1.0 fixed the cream theme. 1.5 was tried
@@ -170,7 +176,7 @@ export default function HeroCanvasV2() {
     // raise this constant for everyone. The shader still animates
     // continuously and must NEVER pause/freeze during scroll - if this ever
     // costs scroll smoothness on a weak machine, step it DOWN, do not raise it.
-    const RENDER_SCALE = 1.0;
+    const RENDER_SCALE = isTouch ? 0.65 : 1.0;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, RENDER_SCALE));
     el.appendChild(renderer.domElement);
 
