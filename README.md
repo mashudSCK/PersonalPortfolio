@@ -1,136 +1,50 @@
-# Personal Portfolio Website
+# Mashud Khalid · Portfolio
 
-A modern, responsive personal portfolio built with vanilla **HTML**, **CSS**, and **JavaScript**.
+A personal portfolio built on the [BrewedOps portfolio template](https://github.com/brewed-ops/portfolio-template), personalized around practical software, curiosity, and learning game development.
 
-![Portfolio Preview](images/preview.png)
+The template’s profile rail, animated contour shader, intro sequence, theme controls, accessibility preferences, and mobile tab navigation are retained. The home, project collection, 3D screenshot showcase, about page, learning lab, and contact page use Mashud’s real content.
 
-## Features
+## Run
 
-- **Responsive layout** (desktop/tablet/mobile)
-- **Light/Dark theme toggle** (saved in `localStorage`)
-- **Smooth scrolling** + active nav state on scroll
-- **Focused mobile project list** with expandable secondary work
-- **Quiet, content-first interactions** without distracting motion
-- **Accessible keyboard navigation** and reduced-motion support
-- **Data-driven projects, skills, and achievements**
-- **Web3Forms contact form** with hCaptcha and input limits
-
-## Getting Started
-
-### Prerequisites
-
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- A code editor (VS Code recommended)
-- Node.js 20+ for quality checks and browser tests
-
-### Run locally
-
-#### Option 1: VS Code Live Server (recommended)
-
-1. Open the folder in VS Code
-2. Install the **Live Server** extension
-3. Right-click `index.html` → **Open with Live Server**
-
-#### Option 2: Python
-
-```bash
-python -m http.server 8000
-```
-
-Open `http://localhost:8000`.
-
-#### Option 3: Node.js
-
-```bash
+```sh
 npm install
 npm run dev
 ```
 
-## Project Structure
+Open http://127.0.0.1:4173. Node.js 20.19+ or 22.12+ is recommended.
 
-```
-PersonalPortfolio/
-├── index.html              # Main page
-├── styles.css              # Styling + theme variables
-├── js/                     # Content, rendering, navigation, theme, form, SEO
-├── tests/                  # Playwright smoke tests and local test server
-├── script.js               # Small module entry point
-├── package.json            # Formatting, linting, and test commands
-├── netlify.toml            # Netlify security headers
-├── vercel.json             # Vercel security headers
-├── robots.txt              # Search crawler policy
-├── sitemap.xml             # Canonical page sitemap
-├── CONTACT_FORM_SETUP.md   # Web3Forms setup guide
-├── images/                 # Local images used by the site
-└── README.md               # This file
+```sh
+npm run build     # TypeScript check and production build in dist/
+npm run preview   # Preview the production build
+npm run lint      # ESLint
+npm test          # Playwright functional and mobile checks
 ```
 
-## Customization
+For a fresh Playwright installation, run `npx playwright install chromium` once.
 
-### Update your info
+## Edit
 
-Edit `index.html` for page copy and contact details. Edit `js/content.js` for repeated collections:
+- `src/data/profile.ts`: identity, social links, portrait, home introduction.
+- `src/data/content.ts`: project descriptions, screenshots, links, skills, and education.
+- `src/views/Workshop.tsx`: home, projects, showcase, about, lab, contact, and missing-page views.
+- `src/styles/workshop.css`: warm palette, component styling, and responsive layouts.
+- `public/images/`: project screenshots and portraits.
+- `public/resume.pdf`: résumé download.
 
-- **Hero:** name, tagline, intro
-- **About:** bio, approach, hobbies
-- **Projects:** titles, descriptions, links, tech tags
-- **Skills/Achievements:** labels and values
-- **Contact:** email + social links
+The showcase supports previous/next buttons, arrow keys, and horizontal swipes. Motion follows system and site accessibility preferences. The jump interaction is an illustrative browser experiment, not a claim of a finished game.
 
-### Replace images
+## Contact
 
-All images are in `images/`. Swap files or update the `<img src="...">` paths in `index.html`.
+The existing Web3Forms configuration and field limits are preserved in `src/data/contact-form.json`. CAPTCHA loads on deployed hosts. Local submissions require CAPTCHA and offer the direct email link as a fallback. Browser tests intercept submission requests and do not send real messages.
 
-### Change theme colors
-
-Edit the CSS variables in `styles.css`:
-
-```css
-:root {
-  --color-accent: #9c4c2d;
-  --color-accent-light: #bd6b48;
-  --color-accent-dark: #74351f;
-}
-```
-
-## Resume download
-
-The **Download Resume** button in `index.html` points to `./resume.pdf`.
-
-To enable it:
-
-1. Add your resume PDF to the project root
-2. Name it `resume.pdf` (or update the link in `index.html`)
-
-## Contact form (Web3Forms)
-
-This site is wired to **Web3Forms** in `js/contact.js` and uses a public `access_key` input in the form.
-
-- Setup instructions: see `CONTACT_FORM_SETUP.md`
-- Endpoint used: `https://api.web3forms.com/submit`
+See `CONTACT_FORM_SETUP.md` for provider configuration. Validate CAPTCHA and real delivery on your deployed domain.
 
 ## Deployment
 
-- **GitHub Pages:** push to GitHub → Settings → Pages → deploy from the root
-- **Netlify/Vercel:** import the repo and deploy with default settings. Included configs apply security headers.
-- **GitHub Pages:** cannot apply repository-defined HTTP headers. Use Netlify or Vercel when headers are required.
+Vercel and Netlify are configured to run `npm run build`, publish `dist/`, and serve React routes through `index.html`. Public files retain the existing security headers. Theme restoration uses an external script compatible with the Content Security Policy.
 
-Update canonical URLs in `index.html`, `js/seo.js`, `robots.txt`, and `sitemap.xml` if the production URL changes.
+## Credits and licensing
 
-## Quality checks
+Template: Copyright © 2026 BrewedOps. See `LICENSE.template` for the PolyForm Noncommercial license and its additional permission to use this for your own portfolio. That permission does not cover selling the template or building portfolios for other people for payment.
 
-```bash
-npm run format:check
-npm run lint
-npm test
-npm run audit
-```
-
-## Credits
-
-- Fonts: system sans-serif and monospace stacks; no font-network dependency
-- Icons: [Font Awesome](https://fontawesome.com/) (self-hosted in `vendor/fontawesome/`) + inline SVGs for theme toggle and contact links
-
----
-
-Made by Mashud Shamsher Khalid
+The contour technique credits OFF+BRAND’s landonorris.com work; its simplex noise is Ashima Arts / Ian McEwan (MIT). Phosphor icons are MIT licensed. Poppins is distributed under the SIL Open Font License. Tool logos remain their owners’ trademarks.
