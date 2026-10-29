@@ -1234,23 +1234,221 @@ html.is-intro .mobile-identity {
 }
 
 /* The portrait has its own transition layer while the theme sweep runs. */
-.rail__avatar { view-transition-name: rail-avatar; }
+.rail__avatar {
+  view-transition-name: rail-avatar;
+}
 .rail__avatar .rail__portrait {
   position: absolute;
   inset: 0;
-  transition: opacity 360ms ease, transform 360ms cubic-bezier(.22, 1, .36, 1);
+  transition:
+    opacity 360ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.rail__portrait--light { opacity: 1; transform: translateY(0); }
-.rail__portrait--dark { opacity: 0; transform: translateY(6px); }
-[data-theme='dark'] .rail__portrait--light { opacity: 0; transform: translateY(6px); }
-[data-theme='dark'] .rail__portrait--dark { opacity: 1; transform: translateY(0); }
+.rail__portrait--light {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rail__portrait--dark {
+  opacity: 0;
+  transform: translateY(6px);
+}
+[data-theme="dark"] .rail__portrait--light {
+  opacity: 0;
+  transform: translateY(6px);
+}
+[data-theme="dark"] .rail__portrait--dark {
+  opacity: 1;
+  transform: translateY(0);
+}
 /* Capture final portrait states for the View Transition's independent layer. */
-[data-theme-sweep] .rail__portrait { transition: none; }
-::view-transition-old(rail-avatar) { animation: portrait-out 360ms ease both; }
-::view-transition-new(rail-avatar) { animation: portrait-in 360ms cubic-bezier(.22, 1, .36, 1) both; }
-@keyframes portrait-out { to { opacity: 0; transform: translateY(6px); } }
-@keyframes portrait-in { from { opacity: 0; transform: translateY(6px); } }
+[data-theme-sweep] .rail__portrait {
+  transition: none;
+}
+::view-transition-old(rail-avatar) {
+  animation: portrait-out 360ms ease both;
+}
+::view-transition-new(rail-avatar) {
+  animation: portrait-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes portrait-out {
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes portrait-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .rail__avatar .rail__portrait { transition: none; }
-  ::view-transition-old(rail-avatar), ::view-transition-new(rail-avatar) { animation: none; }
+  .rail__avatar .rail__portrait {
+    transition: none;
+  }
+  ::view-transition-old(rail-avatar),
+  ::view-transition-new(rail-avatar) {
+    animation: none;
+  }
+}
+/* A small, self-contained runner on the learning page. */
+.runner-world {
+  overflow: hidden;
+  touch-action: manipulation;
+}
+.runner-world .jump-ground {
+  left: 0;
+  right: 0;
+}
+.runner-world .runner-player {
+  left: 18%;
+  width: 36px;
+  height: 36px;
+  bottom: 42px;
+  will-change: transform;
+}
+.runner-obstacle {
+  position: absolute;
+  bottom: 42px;
+  left: 110%;
+  width: 25px;
+  height: 31px;
+  border-radius: 5px 5px 2px 2px;
+  background: var(--navy);
+}
+.runner-score {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.runner-score span {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.runner-world .runner-overlay {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+.runner-world:focus-visible {
+  outline-offset: 3px;
+}
+.runner-copy .action-link {
+  min-width: 125px;
+}
+/* The native pointer remains available for text editing and reduced motion. */
+.pointer-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+}
+.pointer-visible .pointer-trail {
+  opacity: 1;
+}
+.pointer-trail__dot,
+.pointer-trail__ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.pointer-trail__dot span,
+.pointer-trail__ring span {
+  position: absolute;
+  display: block;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.pointer-trail__dot span {
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+}
+.pointer-trail__ring span {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--orange);
+}
+@media (hover: hover) and (pointer: fine) {
+  html.pointer-visible,
+  html.pointer-visible body,
+  html.pointer-visible a,
+  html.pointer-visible button,
+  html.pointer-visible [role="button"] {
+    cursor: none;
+  }
+  html.pointer-visible input,
+  html.pointer-visible textarea,
+  html.pointer-visible select,
+  html.pointer-visible [contenteditable="true"] {
+    cursor: auto;
+  }
+}
+/* Compact mobile skills and match the portrait to the selected theme. */
+@media (max-width: 1099px) {
+  .mobile-identity .mobile-portrait {
+    position: relative;
+    display: block;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+  }
+  .mobile-portrait img {
+    position: absolute;
+    inset: 0;
+    transition:
+      opacity 360ms ease,
+      transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mobile-portrait__light {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-portrait__dark {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  [data-theme="dark"] .mobile-portrait__light {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  [data-theme="dark"] .mobile-portrait__dark {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 650px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+  }
+  .skills-grid h3 {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .skills-grid ul {
+    font-size: 12px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+  .skills-grid li + li {
+    margin-top: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-portrait img {
+    transition: none;
+  }
 }

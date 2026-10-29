@@ -1,3 +1,4 @@
+import PocketRunner from "@/components/PocketRunner";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -76,7 +77,22 @@ export function Home() {
   return (
     <section className="workshop workshop-home">
       <div className="mobile-identity">
-        <img src={profile.avatarSrc} alt="" width="48" height="48" />
+        <span className="mobile-portrait" aria-hidden="true">
+          <img
+            className="mobile-portrait__light"
+            src={profile.avatarSrc}
+            alt=""
+            width="56"
+            height="56"
+          />
+          <img
+            className="mobile-portrait__dark"
+            src={profile.darkAvatarSrc}
+            alt=""
+            width="56"
+            height="56"
+          />
+        </span>
         <div>
           <strong>Mashud Khalid</strong>
           <span>Software builder · Philippines</span>
@@ -459,15 +475,6 @@ export function About() {
 }
 
 export function Lab() {
-  const [jumped, setJumped] = useState(false);
-  const [count, setCount] = useState(0);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(
-    () => () => {
-      if (timer.current) clearTimeout(timer.current);
-    },
-    [],
-  );
   return (
     <section className="workshop">
       <PageHead title="Room to experiment.">
@@ -475,39 +482,7 @@ export function Lab() {
         with a little room to play.
       </PageHead>
       <div className="lab-layout">
-        <div className="jump-demo">
-          <div className="jump-world" aria-hidden="true">
-            <div className={`jump-character${jumped ? " is-jumping" : ""}`}>
-              <span />
-              <span />
-            </div>
-            <div className="jump-ground" />
-          </div>
-          <div>
-            <h2>A tiny jump. A bigger question.</h2>
-            <p>
-              What makes a simple action feel satisfying? Timing, weight, and
-              feedback are part of what draws me toward game development.
-            </p>
-            <button
-              type="button"
-              className="action-link"
-              disabled={jumped}
-              onClick={() => {
-                setJumped(true);
-                setCount((c) => c + 1);
-                timer.current = setTimeout(() => setJumped(false), 650);
-              }}
-            >
-              Try a jump <GameController size={21} />
-            </button>
-            <p className="jump-count" role="status">
-              {count
-                ? `${count} ${count === 1 ? "jump" : "jumps"}. Small steps count.`
-                : "A small browser experiment."}
-            </p>
-          </div>
-        </div>
+        <PocketRunner />
         <div className="lab-notes">
           <article>
             <GameController size={26} />

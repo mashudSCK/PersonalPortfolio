@@ -12,6 +12,7 @@ import QuickMenu from "@/components/QuickMenu";
 import Rail from "@/components/Rail";
 import IntroOverlay from "@/components/IntroOverlay";
 import AccessMenu from "@/components/AccessMenu";
+import PointerTrail from "@/components/PointerTrail";
 import { motionReduced, A11Y_EVENT } from "@/lib/a11y";
 import { useLenis, SCROLLER_ID } from "@/hooks/useLenis";
 import { useIsPhone } from "@/hooks/useMediaQuery";
@@ -122,6 +123,7 @@ export default function App() {
   return (
     <>
       <IntroOverlay />
+      <PointerTrail />
       <a href={`#${SCROLLER_ID}`} className="skip-link">
         Skip to main content
       </a>

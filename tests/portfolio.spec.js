@@ -43,9 +43,7 @@ test("carousel supports buttons, keyboard, and wraparound", async ({
     "The Shelves of Mash",
   );
   await page.getByRole("button", { name: "Previous project" }).click();
-  await expect(page.locator(".project-story h2")).toHaveText(
-    "Expense Tracker",
-  );
+  await expect(page.locator(".project-story h2")).toHaveText("Expense Tracker");
 });
 test("theme persists after reload", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -127,7 +125,10 @@ test("mobile routes fit and navigation and jump work", async ({ page }) => {
     .getByRole("link", { name: "Lab" })
     .click();
   await expect(page).toHaveURL(/\/lab$/);
-  await page.getByRole("button", { name: "Try a jump" }).click();
-  await expect(page.getByRole("status")).toContainText("1 jump");
+  await page.getByRole("button", { name: "Start game" }).click();
+  await expect(
+    page.getByRole("button", { name: "Jump", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("status")).toContainText("0 obstacles cleared");
   expect(errors).toEqual([]);
 });
