@@ -1709,3 +1709,6 @@ html[data-showcase-transition="lab"] .runner-icon {
   color: var(--orange-ink);
   margin-bottom: 12px;
 }
+@media (max-width: 650px) {
+  .workshop-hero p { text-align: justify; hyphens: auto; }
+}
