@@ -22,13 +22,15 @@ import contactMarkup from "@/data/contact-form.json";
 
 const Arrow = () => <ArrowUpRight size={20} aria-hidden="true" />;
 const tools = [
-  "React / Next.js",
-  "TypeScript",
-  "Node.js",
-  "Flutter",
-  "PHP",
-  "MySQL",
-  "Git",
+  { name: "Codex", icon: "/icons/codex.svg" },
+  { name: "VS Code", icon: "/icons/vscode.svg" },
+  { name: "GitHub", icon: "/icons/github.svg" },
+  { name: "Obsidian", icon: "https://cdn.simpleicons.org/obsidian" },
+  { name: "Godot", icon: "https://cdn.simpleicons.org/godotengine" },
+  { name: "Git", icon: "https://cdn.simpleicons.org/git" },
+  { name: "Docker", icon: "/icons/ai/docker.svg" },
+  { name: "Android Studio", icon: "https://cdn.simpleicons.org/androidstudio" },
+  { name: "Claude Code", icon: "/icons/claude-code-logo.png" },
 ];
 const absoluteImage = (image?: string) =>
   image || "/images/mashud-tired-developer.png";
@@ -153,11 +155,19 @@ export function Home() {
         </Link>
       </header>
       <div className="tool-band">
-        <span>Things I build with</span>
-        <div>
-          {tools.map((t) => (
-            <span key={t}>{t}</span>
-          ))}
+        <span>Tools I work with</span>
+        <div className="tool-marquee">
+          <div className="tool-marquee__track">
+            {[0, 1].map((copy) => (
+              <div className="tool-marquee__group" key={copy} aria-hidden={copy === 1 || undefined}>
+                {tools.map((tool) => (
+                  <span className="tool-marquee__item" key={tool.name}>
+                    <img src={tool.icon} alt="" />{tool.name}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="mash-bento">

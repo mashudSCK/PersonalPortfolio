@@ -131,14 +131,7 @@ export default function Rail() {
         <p className="rail__copy">
           &copy; {new Date().getFullYear()}
           <br />
-          {profile.name}.<br />
-          <a
-            href="https://github.com/brewed-ops/portfolio-template"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Built on BrewedOps ↗
-          </a>
+          {profile.name}.
         </p>
       </div>
     </aside>

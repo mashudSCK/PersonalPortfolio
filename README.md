@@ -45,6 +45,6 @@ Vercel and Netlify are configured to run `npm run build`, publish `dist/`, and s
 
 ## Credits and licensing
 
-Template: Copyright © 2026 BrewedOps. See `LICENSE.template` for the PolyForm Noncommercial license and its additional permission to use this for your own portfolio. That permission does not cover selling the template or building portfolios for other people for payment.
+Template: [BrewedOps portfolio template](https://github.com/brewed-ops/portfolio-template), copyright © 2026 BrewedOps. See `LICENSE.template` for the PolyForm Noncommercial license and its additional permission to use this for your own portfolio. That permission does not cover selling the template or building portfolios for other people for payment.
 
 The contour technique credits OFF+BRAND’s landonorris.com work; its simplex noise is Ashima Arts / Ian McEwan (MIT). Phosphor icons are MIT licensed. Poppins is distributed under the SIL Open Font License. Tool logos remain their owners’ trademarks.
