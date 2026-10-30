@@ -155,3 +155,130 @@ test("touch devices animate the background unless motion is reduced", async ({
   await expect(page.locator(".hero-canvas canvas")).toHaveCount(0);
   await context.close();
 });
+
+test("showcase annotations follow the selected project and work by keyboard", async ({
+  page,
+}) => {
+  await page.goto("/showcase");
+  await expect(page.locator("#screenshot-detail")).toContainText(
+    "Explore the Atlas",
+  );
+  const marker = page.getByRole("button", {
+    name: "Show detail: Thought of the day",
+  });
+  await marker.focus();
+  await page.keyboard.press("Enter");
+  await expect(marker).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#screenshot-detail")).toContainText(
+    "A selected thought",
+  );
+  await page.getByRole("button", { name: "Next project" }).click();
+  await expect(page.locator("#screenshot-detail")).toContainText(
+    "Optional name",
+  );
+  await expect(
+    page.getByRole("button", { name: "Show detail: Start a conversation" }),
+  ).toBeVisible();
+});
+
+test("featured screenshot shares its transition with the showcase", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await page.evaluate(() => {
+    const original = document.startViewTransition.bind(document);
+    window.sharedNames = [];
+    document.startViewTransition = (callback) =>
+      original(async () => {
+        window.sharedNames.push(
+          getComputedStyle(document.querySelector(".featured-screen img"))
+            .viewTransitionName,
+        );
+        await callback();
+        window.sharedNames.push(
+          getComputedStyle(
+            document.querySelector(
+              '.carousel-slide[data-position="0"] .screenshot-frame img',
+            ),
+          ).viewTransitionName,
+        );
+      });
+  });
+  await page.locator(".tile-featured").click();
+  await expect(page).toHaveURL(/\/showcase$/);
+  await expect
+    .poll(() => page.evaluate(() => window.sharedNames))
+    .toEqual(["featured-project", "featured-project"]);
+  await expect(page.locator(".project-story h2")).toHaveText(
+    "The Shelves of Mash",
+  );
+});
+
+test("featured card respects reduced motion while remaining navigable", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const card = page.locator(".tile-featured");
+  await card.focus();
+  await expect(card).toBeFocused();
+  await expect(card).toHaveCSS("transform", "none");
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/showcase$/);
+});
+
+for (const [label, card, oldSelector, newSelector, route, name] of [
+  [
+    "about portrait",
+    ".tile-about",
+    ".tile-about > img",
+    ".about-portrait",
+    "about",
+    "about-portrait",
+  ],
+  [
+    "projects heading",
+    ".tile-work",
+    ".tile-work h2",
+    ".workshop-head h1",
+    "projects",
+    "projects-heading",
+  ],
+  [
+    "lab gamepad",
+    ".tile-lab",
+    ".tile-lab .tile-heading svg:first-child",
+    ".runner-icon",
+    "lab",
+    "lab-gamepad",
+  ],
+]) {
+  test(`shares the ${label} with its destination`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto("/");
+    await page.evaluate(
+      ({ oldSelector, newSelector }) => {
+        const original = document.startViewTransition.bind(document);
+        window.sharedNames = [];
+        document.startViewTransition = (callback) =>
+          original(async () => {
+            window.sharedNames.push(
+              getComputedStyle(document.querySelector(oldSelector))
+                .viewTransitionName,
+            );
+            await callback();
+            window.sharedNames.push(
+              getComputedStyle(document.querySelector(newSelector))
+                .viewTransitionName,
+            );
+          });
+      },
+      { oldSelector, newSelector },
+    );
+    await page.locator(card).click();
+    await expect(page).toHaveURL(new RegExp(`/${route}$`));
+    await expect
+      .poll(() => page.evaluate(() => window.sharedNames))
+      .toEqual([name, name]);
+  });
+}

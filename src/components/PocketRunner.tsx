@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { GameController } from "@phosphor-icons/react";
 
 type Phase = "ready" | "playing" | "over";
 const PLAYER_X = 18;
@@ -134,6 +135,7 @@ export default function PocketRunner() {
         )}
       </div>
       <div className="runner-copy">
+        <GameController className="runner-icon" size={26} aria-hidden="true" />
         <h2>A tiny game. One more try.</h2>
         <p>
           Jump over the obstacles and see how far you can go. Press Space or ↑

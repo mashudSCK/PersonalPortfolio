@@ -47,7 +47,11 @@ export default function Rail() {
   return (
     <aside className="rail" aria-label="Profile and site navigation">
       <div className="rail__inner">
-        <span className="rail__avatar" role="img" aria-label={`Illustrated portrait of ${profile.name}`}>
+        <span
+          className="rail__avatar"
+          role="img"
+          aria-label={`Illustrated portrait of ${profile.name}`}
+        >
           <img
             className="rail__portrait rail__portrait--light"
             src={profile.avatarSrc}
@@ -64,7 +68,10 @@ export default function Rail() {
           />
         </span>
 
-        <h2 className="rail__name">{profile.name}</h2>
+        <h2 className="rail__name" aria-label={profile.name}>
+          <span>Mashud</span>
+          <span>Shamsher Khalid</span>
+        </h2>
         <p className="rail__handle">{profile.handle}</p>
 
         <div className="rail__actions">

@@ -1452,3 +1452,260 @@ html.is-intro .mobile-identity {
     transition: none;
   }
 }
+/* Screenshot markers stay tied to the underlying image as the carousel crops. */
+.carousel-slide {
+  container-type: size;
+}
+.screenshot-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(100%, calc(100cqh * var(--image-ratio)));
+  aspect-ratio: var(--image-ratio);
+  transform: translate(-50%, -50%);
+}
+.screenshot-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.screenshot-marker {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 2;
+}
+.screenshot-marker span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #873f28;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px #0005;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  transition:
+    transform 200ms ease,
+    background 200ms ease;
+}
+.screenshot-marker:hover span,
+.screenshot-marker:focus-visible span,
+.screenshot-marker[aria-pressed="true"] span {
+  transform: scale(1.15);
+  background: #462a20;
+}
+.screenshot-marker:focus-visible {
+  outline: 3px solid #873f28;
+  outline-offset: 0;
+}
+.screenshot-detail {
+  display: flex;
+  align-items: start;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+.screenshot-detail__number {
+  display: grid;
+  place-items: center;
+  flex: 0 0 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: #fff;
+  background: #873f28;
+  font-size: 11px;
+  font-weight: 600;
+}
+.screenshot-detail h2 {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.screenshot-detail p {
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 65ch;
+}
+.screenshot-detail__hint {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+@media (max-width: 650px) {
+  .screenshot-detail {
+    margin-top: 18px;
+    padding: 15px;
+  }
+  .screenshot-detail__hint {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screenshot-marker span {
+    transition: none;
+  }
+}
+.screenshot-marker {
+  animation: screenshot-marker-enter 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.screenshot-marker:nth-of-type(3) {
+  animation-delay: 80ms;
+}
+@keyframes screenshot-marker-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -35%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screenshot-marker {
+    animation: none;
+  }
+}
+/* Bento focus: emphasize the intended card without reducing text contrast. */
+@media (hover: hover) and (pointer: fine) {
+  .mash-bento:has(.mash-tile:hover) .mash-tile:not(:hover) {
+    filter: saturate(0.78);
+  }
+  .mash-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px #302a261c;
+  }
+}
+.mash-bento:has(.mash-tile:focus-visible) .mash-tile:not(:focus-visible) {
+  filter: saturate(0.78);
+}
+.mash-tile:focus-visible {
+  border-color: var(--orange);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 14px #302a261c;
+}
+.mash-tile {
+  transition:
+    border-color 200ms ease,
+    background 200ms ease,
+    filter 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+/* The featured screenshot is the same image in both routes. */
+html[data-showcase-transition="showcase"] .featured-screen img,
+html[data-showcase-transition="showcase"]
+  .carousel-slide[data-position="0"]
+  .screenshot-frame
+  img {
+  view-transition-name: featured-project;
+}
+html[data-showcase-transition]::view-transition-old(root) {
+  animation: showcase-page-out 220ms ease both;
+}
+html[data-showcase-transition]::view-transition-new(root) {
+  animation: showcase-page-in 300ms ease both;
+}
+::view-transition-group(featured-project) {
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes showcase-page-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes showcase-page-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mash-tile:hover,
+  .mash-tile:focus-visible {
+    transform: none;
+  }
+  .mash-tile {
+    transition: none;
+  }
+}
+html[data-a11y-motion="true"] .mash-tile:hover,
+html[data-a11y-motion="true"] .mash-tile:focus-visible {
+  transform: none;
+}
+/* A centered two-line signature keeps the full name together in the rail. */
+@media (min-width: 1100px) {
+  .rail__name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    text-align: center;
+  }
+  .rail__name span:first-child {
+    font-size: 21px;
+  }
+  .rail__name span:last-child {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .workshop-hero > .text-link {
+    min-height: 44px;
+    padding: 11px 18px;
+    border-radius: 8px;
+    background: var(--orange);
+    color: var(--cream);
+    font-weight: 600;
+    transition: background 180ms ease;
+  }
+  .workshop-hero > .text-link:hover {
+    background: var(--orange-hover);
+    text-decoration: none;
+  }
+}
+.lab-notes p,
+.project-copy > p:not(.project-role),
+.project-story p,
+.about-copy p {
+  text-align: justify;
+  hyphens: auto;
+}
+/* Each transition names one matching element on the originating and destination pages. */
+html[data-showcase-transition="about"] .tile-about > img,
+html[data-showcase-transition="about"] .about-portrait {
+  view-transition-name: about-portrait;
+}
+html[data-showcase-transition="projects"] .tile-work h2,
+html[data-showcase-transition="projects"] .workshop-head h1 {
+  view-transition-name: projects-heading;
+}
+html[data-showcase-transition="lab"] .tile-lab .tile-heading svg:first-child,
+html[data-showcase-transition="lab"] .runner-icon {
+  view-transition-name: lab-gamepad;
+}
+::view-transition-group(about-portrait),
+::view-transition-group(projects-heading),
+::view-transition-group(lab-gamepad) {
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.runner-icon {
+  color: var(--orange-ink);
+  margin-bottom: 12px;
+}

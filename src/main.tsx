@@ -29,7 +29,7 @@ restorePerfTier();
 restorePrefs();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter useTransitions={false}>
       <Routes>
         <Route element={<App />}>
           <Route index element={<Home />} />

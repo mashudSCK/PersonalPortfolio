@@ -1,6 +1,7 @@
 import PocketRunner from "@/components/PocketRunner";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { flushSync } from "react-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowUpRight,
   ArrowLeft,
@@ -14,6 +15,8 @@ import {
 } from "@phosphor-icons/react";
 import { projects, skillGroups, achievements } from "@/data/content";
 import { profile } from "@/data/profile";
+import { projectAnnotations } from "@/data/projectAnnotations";
+import { motionReduced } from "@/lib/a11y";
 import contactMarkup from "@/data/contact-form.json";
 
 const Arrow = () => <ArrowUpRight size={20} aria-hidden="true" />;
@@ -64,6 +67,43 @@ function PageHead({
 }
 
 export function Home() {
+  const navigate = useNavigate();
+  const openShared = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    path: string,
+    target: string,
+  ) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
+    if (
+      !document.startViewTransition ||
+      motionReduced() ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+    event.preventDefault();
+    const root = document.documentElement;
+    root.dataset.showcaseTransition = target;
+    try {
+      const transition = document.startViewTransition(() => {
+        flushSync(() => navigate(path));
+      });
+      const cleanup = () => {
+        delete root.dataset.showcaseTransition;
+      };
+      void transition.finished.then(cleanup, cleanup);
+    } catch {
+      delete root.dataset.showcaseTransition;
+      navigate(path);
+    }
+  };
   useEffect(() => {
     document.title = "Mashud Shamsher Khalid | Software Builder";
     document
@@ -120,7 +160,11 @@ export function Home() {
         </div>
       </div>
       <div className="mash-bento">
-        <Link to="/showcase" className="mash-tile tile-featured">
+        <Link
+          to="/showcase"
+          className="mash-tile tile-featured"
+          onClick={(event) => openShared(event, "/showcase", "showcase")}
+        >
           <div className="tile-heading">
             <span>Featured build</span>
             <Arrow />
@@ -136,7 +180,11 @@ export function Home() {
             <p>A quieter corner of the web for ideas that belong together.</p>
           </div>
         </Link>
-        <Link to="/projects" className="mash-tile tile-work">
+        <Link
+          to="/projects"
+          className="mash-tile tile-work"
+          onClick={(event) => openShared(event, "/projects", "projects")}
+        >
           <div className="tile-heading">
             <span>Selected work</span>
             <Arrow />
@@ -150,7 +198,11 @@ export function Home() {
             <p>Web apps, mobile builds, and campus systems.</p>
           </div>
         </Link>
-        <Link to="/about" className="mash-tile tile-about">
+        <Link
+          to="/about"
+          className="mash-tile tile-about"
+          onClick={(event) => openShared(event, "/about", "about")}
+        >
           <img src="/images/1x1-pic-480.webp" alt="Mashud" />
           <div>
             <div className="tile-heading">
@@ -165,7 +217,11 @@ export function Home() {
             <p>From Maguindanao del Sur, with plenty left to explore.</p>
           </div>
         </Link>
-        <Link to="/lab" className="mash-tile tile-lab">
+        <Link
+          to="/lab"
+          className="mash-tile tile-lab"
+          onClick={(event) => openShared(event, "/lab", "lab")}
+        >
           <div className="tile-heading">
             <GameController size={26} aria-hidden="true" />
             <Arrow />
@@ -191,16 +247,6 @@ export function Home() {
           <p>The background behind the builds.</p>
         </a>
       </div>
-      <footer className="workshop-footer">
-        <span>Built with curiosity, in the Philippines.</span>
-        <a
-          href="https://github.com/brewed-ops/portfolio-template"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Template by BrewedOps <Arrow />
-        </a>
-      </footer>
     </section>
   );
 }
@@ -301,10 +347,14 @@ export function Work() {
 export function Showcase() {
   const shots = projects.filter((p) => p.image);
   const [active, setActive] = useState(0);
+  const [annotation, setAnnotation] = useState(0);
   const touchStart = useRef<number | null>(null);
-  const move = (delta: number) =>
+  const move = (delta: number) => {
+    setAnnotation(0);
     setActive((i) => (i + delta + shots.length) % shots.length);
+  };
   const current = shots[active];
+  const notes = projectAnnotations[current.title] ?? [];
   return (
     <section className="workshop showcase-page">
       <PageHead title="A closer look.">
@@ -318,7 +368,10 @@ export function Showcase() {
         aria-label="Project showcase"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          if (
+            e.target === e.currentTarget &&
+            (e.key === "ArrowRight" || e.key === "ArrowLeft")
+          ) {
             e.preventDefault();
             move(e.key === "ArrowRight" ? 1 : -1);
           }
@@ -349,11 +402,35 @@ export function Showcase() {
                   transform: `translateX(${position * 58}%) translateZ(${Math.abs(position) * -180}px) rotateY(${position * -16}deg)`,
                 }}
               >
-                <img
-                  src={absoluteImage(p.image)}
-                  alt={i === active ? p.alt : ""}
-                  draggable={false}
-                />
+                <div
+                  className="screenshot-frame"
+                  style={
+                    {
+                      "--image-ratio": (p.width ?? 1440) / (p.height ?? 900),
+                    } as React.CSSProperties
+                  }
+                >
+                  <img
+                    src={absoluteImage(p.image)}
+                    alt={i === active ? p.alt : ""}
+                    draggable={false}
+                  />
+                  {i === active &&
+                    (projectAnnotations[p.title] ?? []).map((note, index) => (
+                      <button
+                        key={note.label}
+                        type="button"
+                        className="screenshot-marker"
+                        style={{ left: `${note.x}%`, top: `${note.y}%` }}
+                        aria-label={`Show detail: ${note.label}`}
+                        aria-pressed={annotation === index}
+                        aria-controls="screenshot-detail"
+                        onClick={() => setAnnotation(index)}
+                      >
+                        <span aria-hidden="true">{index + 1}</span>
+                      </button>
+                    ))}
+                </div>
               </div>
             );
           })}
@@ -378,6 +455,25 @@ export function Showcase() {
           </button>
         </div>
       </div>
+      {notes.length > 0 && (
+        <div
+          className="screenshot-detail"
+          id="screenshot-detail"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span className="screenshot-detail__number" aria-hidden="true">
+            {annotation + 1}
+          </span>
+          <div>
+            <h2>{notes[annotation].label}</h2>
+            <p>{notes[annotation].detail}</p>
+          </div>
+          <span className="screenshot-detail__hint">
+            Select a marker to explore
+          </span>
+        </div>
+      )}
       <article className="project-story" key={current.title}>
         <div>
           <h2>{current.title}</h2>
