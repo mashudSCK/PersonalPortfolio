@@ -31,5 +31,10 @@ export const profile = {
       href: "https://linkedin.com/in/mashudkhalid",
       iconPath: "/icons/linkedin.svg",
     },
+    {
+      label: "Facebook profile",
+      href: "https://www.facebook.com/mashud.nvm/",
+      iconPath: "/icons/facebook.svg",
+    },
   ],
 };

@@ -12,6 +12,7 @@ import {
   EnvelopeSimple,
   GithubLogo,
   LinkedinLogo,
+  FacebookLogo,
 } from "@phosphor-icons/react";
 import { projects, skillGroups, achievements } from "@/data/content";
 import { profile } from "@/data/profile";
@@ -714,6 +715,14 @@ export function Contact() {
           >
             <LinkedinLogo size={24} />
             LinkedIn <Arrow />
+          </a>
+          <a
+            href="https://www.facebook.com/mashud.nvm/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FacebookLogo size={24} />
+            Facebook <Arrow />
           </a>
           <p>
             Maguindanao del Sur, Philippines
