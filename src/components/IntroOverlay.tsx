@@ -163,12 +163,15 @@ export default function IntroOverlay() {
       canvas.style.height = `${CANVAS_H}px`;
 
       const height = t?.height ?? title.offsetHeight;
-      const scale = Math.min((window.innerWidth * 0.86) / width, 2.6);
+      const scale = Math.min(
+        (window.innerWidth * 0.86) / width,
+        (window.innerHeight * 0.82) / (height + 44 + CANVAS_H),
+        1.25,
+      );
       const w = width * scale;
       const h = height * scale;
       const sx = (window.innerWidth - w) / 2;
-      const sy =
-        (window.innerHeight - h) / 2 - Math.min(96, window.innerHeight * 0.09);
+      const sy = (window.innerHeight - (height + 44 + CANVAS_H) * scale) / 2;
 
       const restTransform = `translate(${sx}px, ${sy}px) scale(${scale})`;
       const canvasTransform = `translate(${sx}px, ${sy + h + 44 * scale}px) scale(${scale})`;
