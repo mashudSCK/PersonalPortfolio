@@ -395,6 +395,19 @@ export default function IntroOverlay() {
         { duration: 420, easing: EASE_OUT },
       );
       if (t) {
+        const accent = target?.querySelector<HTMLElement>("span");
+        const secondLine = Array.from(
+          title.querySelectorAll<HTMLElement>(".boot__word-in"),
+        ).slice(profile.displayName.line1.split(" ").length);
+        if (accent) {
+          const accentColor = getComputedStyle(accent).color;
+          secondLine.forEach((word) => {
+            play(word, [{ color: getComputedStyle(title).color }, { color: accentColor }], {
+              duration: FLY,
+              easing: EASE_CAMERA,
+            });
+          });
+        }
         play(
           title,
           [

@@ -143,6 +143,16 @@ button:disabled {
 .workshop-hero h1 span {
   color: var(--orange-ink);
 }
+.workshop-hero h1.home__title,
+.workshop-hero h1 span {
+  transition: color 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .workshop-hero h1.home__title,
+  .workshop-hero h1 span {
+    transition: none;
+  }
+}
 .workshop-hero p {
   max-width: 66ch;
   font-size: 14px;
